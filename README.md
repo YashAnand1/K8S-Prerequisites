@@ -1,5 +1,4 @@
 <div align="center">
-h
 
 <!-- add technical charcha logo postgres session 3 -->
 # PostgresSQL Session 4        
