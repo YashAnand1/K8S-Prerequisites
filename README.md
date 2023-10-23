@@ -9,14 +9,12 @@ ________________________________________________________________________________
 </div>
 
 ## Contents
-
-## Table of Contents
-- [Task 1: Create Roles](#task-1-create-roles)
-- [Task 2: What is pid #1 of system and pid #1 of container](#task-2-what-is-pid-1-of-system-and-pid-1-of-container)
-- [Task 3: Push any image on Nexus repository over SSL (443)](#task-3-push-any-image-on-nexus-repository-over-ssl-443-which-you-have-configured-in-question-3)
-- [Task 6: Difference between Podman and Docker](#task-6-difference-between-podman-and-docker)
-- [Task 7: Docker should be running as a non-root user without sudo](#task-7-docker-should-be-running-non-root-user-without-sudo)
-- [Task 8: Setup Gitea on Podman container and perform clone and push operation](#task-8-setup-gitea-on-podman-container-and-perform-clone-and-push-operation)
+- [Task 1](#task-1)
+- [Task 2](#task-2)
+- [Task 3](#task-3)
+- [Task 6](#task-6)
+- [Task 7](#task-7)
+- [Task 8](#task-8)
 - [References](#references)
 
 _____________________________________________________________________________________     
