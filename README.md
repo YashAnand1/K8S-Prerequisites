@@ -39,6 +39,8 @@ PID or process ID is the unique identification assigned to a process, in both ou
 Similarly in containers, pid 1 refers to the first process that is started with the container. In docker and podman, this process is also responsible for managing and starting a container and pid #1 can be specified in the dockerfile while creating a container. The processes running inside of a container can be found using `docker top <containername> -p <processid>`. 
 ___________________________________________________
 
+<div align="center">
+  
 ## **Task 3**
 **Push any image on nexus repository over the SSL (443) which you have configure in question 3**
 </div>
@@ -114,6 +116,8 @@ Applications by default have root priveleges inside of containers which means th
 - sudo usermod −aG docker <nonrootusername> (here 'modify user' & 'appended' him to a 'Group' of docker)
 ___________________________________________________
 
+<div align="center">
+  
 ## **Task 8**
 **Setup gitea on podman container and perform clone and push operation**
 </div>
