@@ -56,7 +56,7 @@ ___________________________________________________
 <div align="center">
 
 ## **Task 7**
-**Docker should be running non root user without sudo  **
+**Docker should be running non root user without sudo**
 </div>
 
 Applications by default have root priveleges inside of containers which means that important changes can be made easily which is a threat to secuirty. In order to run Docker as a non-root user, we can add the user to docker group which will allow running docker without superuser priveleges. This can be done in the following steps:
