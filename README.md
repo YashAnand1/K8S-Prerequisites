@@ -23,6 +23,8 @@ In the context of our system, a process is the ongoing execution of a program. P
 For finding processes running on our system, we can run the `top` command. But if we would like to find the processes running inside of docker/podman, we can run `docker stats`/`podman stats` or if we would like to find the processes running inside of a container, we can run `docker top <containername>`/`podman top <containername>`.
 ___________________________________________________
 
+<div align="center">
+
 ## **Task 2**
 **What is pid #1 of system and pid  #1 of container**
 </div>
@@ -31,6 +33,8 @@ PID or process ID is the unique identification assigned to a process, in both ou
 
 Similarly in containers, pid 1 refers to the first process that is started with the container. In docker and podman, this process is also responsible for managing and starting a container and pid #1 can be specified in the dockerfile while creating a container. The processes running inside of a container can be found using `docker top <containername> -p <processid>`. 
 ___________________________________________________
+
+<div align="center">
 
 ## **Task 6**
 **Difference between podman and docker**
@@ -49,6 +53,8 @@ Both help containerise applications. Containers help package applications, codes
 
 ___________________________________________________
 
+<div align="center">
+
 ## **Task 7**
 **Docker should be running non root user without sudo  **
 </div>
@@ -57,6 +63,8 @@ Applications by default have root priveleges inside of containers which means th
 - sudo groupadd docker (In my case I was already non-root)
 - sudo usermod −aG docker <nonrootusername> (here 'modify user' & 'appended' him to a 'Group' of docker)
 ___________________________________________________
+
+<div align="center">
 
 ## **References**
 </div>
