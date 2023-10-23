@@ -34,6 +34,51 @@ PID or process ID is the unique identification assigned to a process, in both ou
 Similarly in containers, pid 1 refers to the first process that is started with the container. In docker and podman, this process is also responsible for managing and starting a container and pid #1 can be specified in the dockerfile while creating a container. The processes running inside of a container can be found using `docker top <containername> -p <processid>`. 
 ___________________________________________________
 
+## **Task 3**
+**Push any image on nexus repository over the SSL (443) which you have configure in question 3**
+</div>
+
+Nexus server helps host docker images. Using docker compose, we create nexus repository. We expose 3 ports: 8181 web port for accessing ui, 81 for docker hub repo, 83 for private repository. The compose file was as follows:
+```
+version: "3.7"
+
+services:
+  nexus:
+    image: sonatype/nexus3
+    expose:
+      - 8081
+      - 8084
+      - 8083
+    ports:
+      - "8084:8082"
+      - "8083:8083"
+      - "8081:8081"
+    volumes:
+      - ./volume:/nexus-data
+    restart: always
+
+```
+In the compose file, volume directory will be having the nexus data and before composing the repository, we run chmod 777. The output of this will create the docker container:
+![img](https://i.imgur.com/kaLuROy.png)
+
+To ensure that the server was indeed created and has started, we will run 'docker logs -f lab-nexus-sever-master_nexus_1'. The output will be:
+![img](https://i.imgur.com/4Ev1Drq.png)
+
+We can access nexus from localhost:8081 and to login, we use the 'admin' user and the password is in the '/nexus/data/admin_password'. 
+![img](https://i.imgur.com/yd6r9Cl.png)
+
+After signing in, we are asked to create a new password. After I had created a new password, I was asked to choose configure anonymous access, meaning I would not have to login to pull public images.
+
+To create the SSL certificate, I ran 'keytool -printcert -rfc -sslserver repo1.maven.org > repo1.pem' as it had been mentioned as a method in the [Nexus documentation](https://help.sonatype.com/repomanager3/nexus-repository-administration/configuring-ssl) for connecting with SSL. Afterwards, I entered into the [admin settings](http://localhost:8081/#admin/security/sslcertificates) and pasted the certificate of the pem file that had been created earlier. 
+
+Soon I was asked to add the certificate to truststore to complete the SSL connection process and once done, my SSL certificate was added successfuly:
+
+![img](https://i.imgur.com/OXYhVCd.png)
+
+
+___________________________________________________
+
+
 <div align="center">
 
 ## **Task 6**
@@ -64,6 +109,19 @@ Applications by default have root priveleges inside of containers which means th
 - sudo usermod −aG docker <nonrootusername> (here 'modify user' & 'appended' him to a 'Group' of docker)
 ___________________________________________________
 
+## **Task 8**
+**Setup gitea on podman container and perform clone and push operation**
+</div>
+
+In order to setup gitea on podman, I ran the following command for creating a podman container
+```
+user@yashanand:~/gitea$ sudo podman run -d --name=gitea -p 3001:3000 -p 23:22 gitea/gitea:latest
+```
+Through this, I was able to successfuly create a gitea container on my system. I also visited 'localhost:3001' to further setup gitea on my system. I let the default configurations stay as they were and installed gitea:
+![img](https://i.imgur.com/61YcBnh.png)
+
+___________________________________________________
+
 <div align="center">
 
 ## **References**
@@ -74,10 +132,17 @@ https://www.padok.fr/en/blog/docker-processes-container#:~:text=Each%20process%2
 Task 2:
 https://www.reddit.com/r/docker/comments/119unid/docker_and_pid_1/
 
+Task 3:
+https://www.youtube.com/watch?v=dpWxWr90MGI
+https://support.sonatype.com/hc/en-us/articles/217542177-Using-Self-Signed-Certificates-with-Nexus-Repository-and-Docker-Daemon
+
+Task 6:
+https://www.imaginarycloud.com/blog/podman-vs-docker/#:~:text=Podman%20is%20different%20from%20Docker,users%2C%20which%20can%20improve%20security.
+
 Task 7:
 https://www.tutorialspoint.com/running-docker-container-as-a-non-root-user
 
 Task 8:
-
+https://www.digitalocean.com/community/tutorials/how-to-install-gitea-on-ubuntu-using-docker
 
 --------
